@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gesture Volume Control</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #0f172a, #1e293b, #0a0f1f);
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 60px 80px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(12px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 40px rgba(59,130,246,0.6);
+    }
+
+    h1 {
+      font-size: 2.8em;
+      font-weight: 700;
+      background: linear-gradient(90deg, #60a5fa, #34d399);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2em;
+      font-weight: 500;
+      color: #cbd5e1;
+      margin-bottom: 40px;
+    }
+
+    .btn {
+      padding: 14px 36px;
+      background: linear-gradient(90deg, #3b82f6, #10b981);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1em;
+      box-shadow: 0 0 10px rgba(16,185,129,0.4);
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: linear-gradient(90deg, #10b981, #3b82f6);
+      transform: scale(1.07);
+      box-shadow: 0 0 20px rgba(59,130,246,0.7);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 12px;
+      font-size: 0.9em;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Hand Gesture Volume Control</h1>
+    <p class="tagline">Experience touchless audio control using your hand gestures.</p>
+    <a href="/login" class="btn blue big">Login to Explore Detection</a>
+  </div>
+
+  <footer>© 2025 Gesture Volume Project | Infosys Internship</footer>
+</body>
+</html>

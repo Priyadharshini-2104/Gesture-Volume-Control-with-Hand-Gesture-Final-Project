@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Gesture Volume Control with Calibration</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="detect-page">
+
+    <!-- RIGHT: CAMERA & CONTROL -->
+    <div class="right">
+      <h2>Live Camera</h2>
+      <div class="video-box">
+        <img id="video" src="/video_feed" alt="Video feed" />
+      </div>
+      <div class="distance-num">Distance: <span id="dist">0</span> px</div>
+
+      <!-- Camera Control Buttons -->
+      <div class="control-buttons">
+        <button id="startCam" class="btn green">Start</button>
+        <button id="pauseCam" class="btn orange">Pause</button>
+        <button id="stopCam" class="btn red">Stop</button>
+      </div>
+
+      <!-- Manual Calibration -->
+      <div class="calib-panel">
+        <h3>Manual Calibration</h3>
+        <p>Enter Min and Max distance manually and Apply.</p>
+        <div class="manual-calib">
+          <input type="number" id="minInput" placeholder="Min px" />
+          <input type="number" id="maxInput" placeholder="Max px" />
+          <button id="applyManual" class="btn blue">Apply Calibration</button>
+        </div>
+        <p>Min: <span id="calMin">20</span> | Max: <span id="calMax">200</span> | Applied: <span id="calApplied">false</span></p>
+      </div>
+    </div>
+
+<!-- LEFT: METRICS (VERTICAL), GRAPH, VOLUME, GESTURE -->
+<div class="left">
+  <div class="left-container">
+    <!-- Vertical System Metrics Sidebar -->
+    <div class="metrics-vertical">
+      <h3>System Metrics</h3>
+
+      <div class="circle-metric" id="respGauge">
+        <svg><circle class="bg"/><circle class="meter"/></svg>
+        <div class="label">Response</div>
+        <div class="value" id="resp">0</div>
+      </div>
+
+      <div class="circle-metric" id="volGauge">
+        <svg><circle class="bg"/><circle class="meter"/></svg>
+        <div class="label">Volume</div>
+        <div class="value" id="volPerc">0</div>
+      </div>
+
+      <div class="circle-metric" id="accGauge">
+        <svg><circle class="bg"/><circle class="meter"/></svg>
+        <div class="label">Accuracy</div>
+        <div class="value" id="acc">0</div>
+      </div>
+
+      <div class="circle-metric" id="distGauge">
+        <svg><circle class="bg"/><circle class="meter"/></svg>
+        <div class="label">Distance</div>
+        <div class="value" id="distVal">0</div>
+      </div>
+    </div>
+
+    <!-- Graph + UI Content -->
+    <div class="left-content">
+      <h2>Live Distance Graph</h2>
+      <div class="graph-box">
+        <img id="plot" src="/plot.png" alt="Plot" />
+      </div>
+
+      <h2>Volume Visualization</h2>
+      <div class="volume-box">
+        <div class="progress-bar"><div id="fill"></div></div>
+        <span id="vol">0%</span>
+      </div>
+
+      <div class="gesture-box">
+        <h3>Gesture Dashboard</h3>
+        <div class="gesture-container">
+          <div class="gesture-card" id="gOpen"><div class="icon">✋</div><div class="label">OPEN</div></div>
+          <div class="gesture-card" id="gClosed"><div class="icon">🤚</div><div class="label">CLOSED</div></div>
+          <div class="gesture-card" id="gPinch"><div class="icon">👌</div><div class="label">PINCH</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  </div>
+  <script src="/static/script.js"></script>
+</body>
+</html>

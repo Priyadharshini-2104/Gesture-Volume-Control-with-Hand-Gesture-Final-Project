@@ -1,0 +1,497 @@
+/* ================= EXISTING STYLES (unchanged) ================= */
+/* Global look */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #0d1117, #1c2230);
+  color: #eaeaea;
+  margin: 0;
+  padding: 0;
+}
+
+/* Panels layout */
+.detect-page {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  padding: 20px 40px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 0.9fr 0.15fr 1.1fr;
+  align-items: stretch;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+}
+.right-content, .left-content {
+  height: calc(100vh - 60px);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+
+/* Webcam (Right Panel) */
+.right {
+  width: 520px; /* reduced from 640px */
+}
+
+/* Graph (Left Panel) */
+.left {
+  min-width: 800px; /* increased width for graph container */
+  flex: 1.2;
+  width:100%;
+  
+}
+
+
+h2, h3 {
+  text-align: center;
+  color: #58a6ff;
+}
+
+/* Camera box */
+.video-box,
+.graph-box {
+  width: 100%;
+  height: 280px;  /* equal height for both */
+  background: #000;
+  border-radius: 10px;
+  border: 2px solid #58a6ff;
+  overflow: hidden;
+  box-shadow: 0 0 12px rgba(88, 166, 255, 0.4);
+}
+
+
+#video { width: 100%; height: 100%; object-fit: cover; }
+
+.distance-num {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary-blue);
+}
+
+/* Buttons */
+.btn {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.25s;
+  color: #fff;
+}
+.btn:hover {
+  transform: scale(1.05);
+}
+.btn.green { background: linear-gradient(90deg, #10b981, #34d399); }
+.btn.orange { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+.btn.red { background: linear-gradient(90deg, #ef4444, #f87171); }
+.btn.blue { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+
+/* -------- BUTTON POSITION FIX -------- */
+.control-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  position: relative;
+}
+.control-buttons button {
+  min-width: 80px;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+/* Place buttons directly below the camera box and center them */
+.right .control-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 8px;
+}
+
+/* Calibration Panel */
+.calib-panel {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 14px;
+  background: rgba(88, 166, 255, 0.1);
+  text-align: center;
+  
+}
+.manual-calib {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+.manual-calib input {
+  width: 80px;
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #58a6ff;
+  background: #0d1117;
+  color: #eaeaea;
+}
+
+/* Graph + Volume */
+/* Graph + Volume */
+#plot {
+  width: 100%;
+  height: 280px; /* same height as webcam */
+  border-radius: 10px;
+  border: 2px solid #58a6ff;
+  background: #000;
+  object-fit: cover;
+  display: block;
+}
+
+
+
+.volume-box {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.progress-bar {
+  width: 100%;
+  height: 28px;
+  background: #222;
+  border-radius: 8px;
+  overflow: hidden;
+}
+#fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #34d399, #60a5fa);
+  transition: width 0.3s ease;
+}
+
+/* Gesture Dashboard */
+.gesture-box {
+  text-align: center;
+  margin-top: 20px;
+}
+.gesture-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.gesture-card {
+  background: #202835;
+  width: 100px;
+  height: 110px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #2d3748;
+  cursor: default;
+  transition: all 0.3s ease;
+}
+.gesture-card .icon { font-size: 32px; margin-bottom: 8px; }
+.gesture-card .label { font-weight: 600; font-size: 14px; color: #c9f0ff; }
+.gesture-card.active {
+  border: 2px solid transparent;
+  background: linear-gradient(135deg, #7c3aed, #06b6d4);
+  color: #fff;
+  box-shadow: 0 0 18px rgba(56,189,248,0.5);
+  transform: translateY(-4px) scale(1.1);
+}
+.gesture-card.active .icon {
+  animation: glowPulse 1.2s infinite alternate;
+}
+
+/* Neon glow animation */
+@keyframes glowPulse {
+  0% { text-shadow: 0 0 4px #fff, 0 0 10px #06b6d4, 0 0 20px #7c3aed; }
+  100% { text-shadow: 0 0 10px #fff, 0 0 25px #06b6d4, 0 0 40px #7c3aed; }
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .detect-page { flex-direction: column; align-items: center; }
+  .right, .left {
+    width: 100%;
+    max-width: 480px;
+    margin-bottom: 20px;
+  }
+}
+
+/* ================= ADDITIONS: INDEX & LOGIN PAGES ================= */
+
+/* Index Page */
+.index-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: radial-gradient(circle at top left, #0d1117, #161b22);
+  color: #eaeaea;
+}
+.center-box {
+  text-align: center;
+  padding: 40px 60px;
+  background: #1f2937;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+.center-box h1 { color: #58a6ff; margin-bottom: 10px; }
+.center-box .tagline {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  color: #c9d1d9;
+}
+
+/* ================= MATCH LOGIN PAGE TO INDEX PAGE ================= */
+
+/* Background and layout same as index */
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: radial-gradient(circle at top left, #0d1117, #161b22);
+  color: #eaeaea;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Smooth fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Login container styled same as index box */
+.login-container {
+  background: #1f2937;
+  border-radius: 15px;
+  text-align: center;
+  padding: 40px 60px;
+  box-shadow: 0 0 25px rgba(88, 166, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+/* Hover glow like index center box */
+.login-container:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 35px rgba(88,166,255,0.6);
+}
+
+/* Heading matches index title */
+.login-container h2 {
+  color: #58a6ff;
+  margin-bottom: 15px;
+  text-shadow: 0 0 8px rgba(88,166,255,0.7);
+}
+
+/* Input fields with glowing hover/focus */
+.login-container input {
+  display: block;
+  width: 250px;
+  margin: 10px auto;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  background: #0d1117;
+  color: #eaeaea;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  border: 2px solid #30363d;
+}
+
+.login-container input:hover,
+.login-container input:focus {
+  border-color: #58a6ff;
+  box-shadow: 0 0 10px #58a6ff;
+  outline: none;
+}
+
+/* Login button same style as index buttons */
+.login-container button {
+  margin-top: 16px;
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.login-container button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(88,166,255,0.7);
+}
+
+/* Hint text styling */
+.login-container .hint {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #9ca3af;
+  text-shadow: 0 0 4px rgba(88,166,255,0.2);
+}
+
+/* Equal spacing for graph & webcam */
+.video-box,
+.graph-box,
+#plot {
+  width: 100%;
+  height: 300px; /* equal visual height */
+  border-radius: 10px;
+  border: 2px solid #58a6ff;
+  background: #000;
+  object-fit: cover;
+  overflow: hidden;
+  box-shadow: 0 0 12px rgba(88,166,255,0.4);
+  height: 280px;
+
+}
+
+
+
+
+/* ================= ADDITION: VERTICAL SYSTEM METRICS SIDEBAR ================= */
+
+/* Left section with vertical metrics + graph alignment */
+.left {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 24px;
+}
+
+/* Container to hold metrics on the left edge and content on right */
+.left-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 28px;
+  width: 100%;
+}
+
+/* Centered Vertical Metrics Sidebar */
+.metrics-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;          /* <-- centers vertically */
+  gap: 30px;
+  position: relative;
+  background: rgba(22, 27, 34, 0.95);
+  border: 2px solid #58a6ff;
+  border-radius: 14px;
+  padding: 16px 10px;
+  width: 100px;
+  height: 100%;                     /* fill full column height */
+  min-height: 600px;                /* equal height to webcam */
+  box-shadow: 0 0 18px rgba(88,166,255,0.3);
+}
+
+
+.metrics-vertical h3 {
+  color: #58a6ff;
+  font-size: 16px;
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+/* The main content (graph, volume, gestures) stays on the right */
+.left-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* ===== UPDATED: SYSTEM METRICS (REDUCED HEIGHT + NEAT SPACING) ===== */
+.system-metrics {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;       /* evenly distribute gauges */
+  align-items: center;
+  position: relative;
+  width: 120px;
+  height: calc(100vh - 320px);         /* 🟢 reduced height (shorter vertically) */
+  background: rgba(22, 27, 34, 0.95);
+  border: 2px solid #58a6ff;
+  border-radius: 14px;
+  box-shadow: 0 0 18px rgba(88,166,255,0.3);
+  padding: 25px 10px;
+  margin-top: 40px;                    /* keep top spacing same */
+  margin-bottom: 30px;                 /* small gap from bottom */
+  overflow: hidden;                    /* prevent scroll */
+}
+
+/* Each circular gauge inside */
+.circle-metric {
+  position: relative;
+  width: 75px;                         /* 🟢 reduced size */
+  height: 75px;                        /* 🟢 reduced size */
+  margin: 10px 0;                      /* 🟢 less vertical spacing */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle-metric svg {
+  width: 75px;
+  height: 75px;
+  transform: rotate(-90deg);
+}
+
+.circle-metric circle {
+  fill: none;
+  stroke-width: 8;
+  cx: 37;
+  cy: 37;
+  r: 32;
+}
+
+.circle-metric circle.bg {
+  stroke: #222;
+}
+
+.circle-metric circle.meter {
+  stroke-linecap: round;
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  transition: stroke-dashoffset 0.4s ease-out;
+}
+
+/* Gauge value + label */
+.circle-metric .value {
+  position: absolute;
+  top: 36%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-weight: 700;
+  font-size: 13px;                     /* 🟢 slightly smaller font */
+  color: #eaeaea;
+}
+
+.circle-metric .label {
+  position: absolute;
+  bottom: -12px;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;                     /* 🟢 slightly smaller font */
+  font-weight: 600;
+  color: #58a6ff;
+}
+
+/* Gauge color themes */
+#respGauge .meter { stroke: #f59e0b; }
+#volGauge .meter { stroke: #34d399; }
+#accGauge .meter { stroke: #3b82f6; }
+#distGauge .meter { stroke: #a855f7; }

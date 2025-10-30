@@ -1,0 +1,8 @@
+Flask==3.0.3
+opencv-python==4.10.0.84
+mediapipe==0.10.14
+matplotlib==3.9.2
+numpy==1.26.4
+pycaw==20230407
+comtypes==1.2.0
+ctypes-callable==1.0.0
